@@ -2788,7 +2788,9 @@ int main(){
                     squareRect.x = ix * RECTANGLE_SIZE;
 					squareRect.y = (HEIGHT - iy - b) * RECTANGLE_SIZE;
 
-					if ((byte & 0x1) != 0){
+					if ((byte & 0x1) == 0){
+						SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
+					} else {
 						SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 					}
                     
