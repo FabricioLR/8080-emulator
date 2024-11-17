@@ -3,14 +3,11 @@
 #include <string.h>
 
 int main() { 
-    FILE *file, *file1, *file2, *file3;
+    FILE *file;
     int c;
     long length = 0;
 
-    file = fopen("invaders.h", "rb");
-    file1 = fopen("invaders.g", "rb");
-    file2 = fopen("invaders.f", "rb");
-    file3 = fopen("invaders.e", "rb");
+    file = fopen("rom/invaders.rom", "rb");
 
     unsigned char code[15000];
 
@@ -26,37 +23,7 @@ int main() {
         i++;
     }
 
-    while (1){
-        c = fgetc(file1);
-        if (c == EOF){
-            break;
-        }
-        code[i] = c;
-        i++;
-    }
-
-    while (1){
-        c = fgetc(file2);
-        if (c == EOF){
-            break;
-        }
-        code[i] = c;
-        i++;
-    }
-
-    while (1){
-        c = fgetc(file3);
-        if (c == EOF){
-            break;
-        }
-        code[i] = c;
-        i++;
-    }
-
     fclose(file);
-    fclose(file1);
-    fclose(file2);
-    fclose(file3);
 
     length = i;
 

@@ -1,13 +1,13 @@
-emulator: emulator.c
+emulator: 8080.cpp emulator.c
 	gcc $^ -o $@
 
-test: test.cpp
+test: 8080.cpp test.cpp
 	g++ $^ -lSDL2 -o $@
 
-disassembler: disassembler.c
+disassembler: 8080.cpp disassembler.c
 	gcc $^ -o $@
 
-window: window.cpp
+window: 8080.cpp window.cpp
 	g++ $^ -lSDL2 -o $@
 
 run-emulator: emulator
