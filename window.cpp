@@ -2685,7 +2685,7 @@ int main(){
     int char1;
     int i = 0;
 
-    file = fopen("invaders.rom", "rb");
+    file = fopen("rom/invaders.rom", "rb");
 
     while (1){
         char1 = fgetc(file);
@@ -2776,33 +2776,26 @@ int main(){
         SDL_RenderClear(renderer);
         SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
+        int index = 0;
 		for (int ix = 0; ix < WIDTH; ix++){
-			for (int iy = 0; iy < HEIGHT;){
-                int offset = (ix * 256 + iy) / 8;
-				uint8_t byte = memory[videomemory + offset];
+			for (int iy = 0; iy < HEIGHT; iy += 8){
+				uint8_t byte = memory[videomemory + index];
 
 				for (int b = 0; b < 8; b++) {
-					int x = ix * RECTANGLE_SIZE;
-                    int y = (HEIGHT - (iy + b)) * RECTANGLE_SIZE;
-
 					SDL_Rect squareRect;
 					squareRect.w = RECTANGLE_SIZE;
 					squareRect.h = RECTANGLE_SIZE;
-					squareRect.x = ix;
-					squareRect.y = 256 - iy;
-                    // squareRect.x = x;
-					// squareRect.y = y;
+                    squareRect.x = ix * RECTANGLE_SIZE;
+					squareRect.y = (HEIGHT - iy - b) * RECTANGLE_SIZE;
 
-					if ((byte & 0x1) == 0){
-						SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
-					} else {
+					if ((byte & 0x1) != 0){
 						SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 					}
+                    
 					SDL_RenderFillRect(renderer, &squareRect);
 					byte >>= 1;
 				}
-                
-                iy++;
+                index++;
 			}
 		}
 
