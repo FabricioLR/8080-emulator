@@ -45,6 +45,7 @@ __uint8_t SF = 0;
 
 int int_enable = 0;
 int cycles = 0;
+int whichInterrupt;
 
 int parity(int x, int size){
 	int parity = 0;
@@ -2716,7 +2717,6 @@ int main(){
     double lastTimer;
     double nextInterrupt;
     double sinceLastCycle;
-    int whichInterrupt;
     SDL_Event event;
     SDL_Renderer *renderer;
     SDL_Window *window;
