@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "stdint.h": "c",
+        "random": "c",
+        "time.h": "c"
+    }
+}
